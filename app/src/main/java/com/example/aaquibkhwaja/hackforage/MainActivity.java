@@ -58,6 +58,7 @@ public class MainActivity extends AppCompatActivity {
 
         final Helper h = new Helper();
         Helper.buildMap();
+        Helper.buildFinalMap();
 //
 //        final AutoComplete<String> adapter = new AutoComplete<>(this,android.R.layout.simple_dropdown_item_1line);
 //
@@ -164,9 +165,12 @@ public class MainActivity extends AppCompatActivity {
                 }
 
                 System.out.println(translatedQuery);
-                query.replace(" ", "+");
+                if (translatedQuery != null) {
+                    translatedQuery.replace(" ", "+");
+                }
+                String finalQuery = Helper.getFinalMap(translatedQuery);
                 try {
-                    Uri uri = Uri.parse("http://dl.flipkart.com/dl/search?q=" + translatedQuery + "&query=" + translatedQuery + "&sid=all");
+                    Uri uri = Uri.parse("http://dl.flipkart.com/dl/search?q=" + finalQuery + "&query=" + finalQuery + "&sid=all");
                     Intent launchIntent = new Intent(Intent.ACTION_VIEW, uri);
                     startActivity(launchIntent);
                 } catch (Exception e) {

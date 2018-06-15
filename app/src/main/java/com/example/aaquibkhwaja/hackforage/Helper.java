@@ -29,6 +29,7 @@ public class Helper {
     }};
 
     private static Map<String, Map<String, String>> wordsMap = new HashMap<>();
+    private static Map<String,String> finalMap = new HashMap<>();
 
     public static String getLanCode(String lang)
     {
@@ -266,5 +267,19 @@ public class Helper {
         banglaMap.put("shosha", "kheera");
 
         wordsMap.put("bn", banglaMap);
+    }
+
+    public static void buildFinalMap()
+    {
+        finalMap.put("ginger", "adrak");
+        finalMap.put("cucumber", "kheera");
+        finalMap.put("gourd", "lauki");
+    }
+
+    public static String getFinalMap(String key)
+    {
+        if (finalMap.containsKey(key.toLowerCase())) {
+            return finalMap.get(key.toLowerCase());
+        } else return key;
     }
 }
