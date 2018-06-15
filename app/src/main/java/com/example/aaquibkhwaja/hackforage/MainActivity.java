@@ -17,6 +17,8 @@ import android.widget.ImageButton;
 import android.widget.Spinner;
 import android.widget.TextView;
 
+import org.json.JSONException;
+
 import java.util.ArrayList;
 import java.util.Locale;
 
@@ -55,6 +57,7 @@ public class MainActivity extends AppCompatActivity {
         });
 
         final Helper h = new Helper();
+        Helper.buildMap();
 //
 //        final AutoComplete<String> adapter = new AutoComplete<>(this,android.R.layout.simple_dropdown_item_1line);
 //
@@ -132,15 +135,38 @@ public class MainActivity extends AppCompatActivity {
                 String input = voiceInput.getText().toString();
                 System.out.println(input);
 
-                String query = h.getResult(input, language);
+//                String query = h.getResult(input, language);
 
 //                System.out.println("query " + query);
 
-//                final String query = voiceInput.getText().toString();
+                final String query = voiceInput.getText().toString();
+                String optimizedQuery = Helper.optimize(query, Helper.getLanCode(language));
 
+                String inputTools = null;
+                String translatedQuery = null;
+
+                if (optimizedQuery == null ) {
+                    try {
+                        inputTools = Helper.inputTools(query, language);
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+
+                    try {
+                        translatedQuery = Helper.translateText(inputTools, Helper.getLanCode(language));
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+                } else {
+                    translatedQuery = optimizedQuery;
+                }
+
+                System.out.println(translatedQuery);
                 query.replace(" ", "+");
                 try {
-                    Uri uri = Uri.parse("http://dl.flipkart.com/dl/search?q=" + query + "&query=" + query + "&sid=all");
+                    Uri uri = Uri.parse("http://dl.flipkart.com/dl/search?q=" + translatedQuery + "&query=" + translatedQuery + "&sid=all");
                     Intent launchIntent = new Intent(Intent.ACTION_VIEW, uri);
                     startActivity(launchIntent);
                 } catch (Exception e) {
