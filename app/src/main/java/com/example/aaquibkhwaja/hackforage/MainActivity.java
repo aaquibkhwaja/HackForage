@@ -47,6 +47,7 @@ public class MainActivity extends AppCompatActivity {
         voiceInput = findViewById(R.id.voiceInput);
         mSpeakBtn = findViewById(R.id.btnSpeak);
         searchButton = findViewById(R.id.button);
+        searchButton.setText(">");
 
         mSpeakBtn.setOnClickListener(new View.OnClickListener() {
 

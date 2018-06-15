@@ -7,6 +7,13 @@
     android:gravity="top"
     tools:context=".MainActivity">
 
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_centerInParent="true"
+        android:scaleType="centerCrop"
+        android:src="@drawable/flipkart_image" />
+
     <Spinner
         android:layout_width="90dp"
         android:layout_height="40dp"
@@ -49,6 +56,7 @@
         android:layout_width="60dp"
         android:layout_height="60dp"
         android:layout_below="@+id/spinner"
+        android:src="@drawable/ic_microphone_2"
         android:layout_centerHorizontal="true" />
 
 </RelativeLayout>
