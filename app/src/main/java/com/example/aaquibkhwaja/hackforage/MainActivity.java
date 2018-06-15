@@ -11,6 +11,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.Filter;
 import android.widget.Filterable;
 import android.widget.ImageButton;
@@ -26,7 +27,7 @@ public class MainActivity extends AppCompatActivity {
 
     private Spinner spinner;
     private ImageButton mSpeakBtn;
-    private TextView voiceInput;
+    private EditText voiceInput;
     private Button searchButton;
 
     private static final int REQ_CODE_SPEECH_INPUT = 100;

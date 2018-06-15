@@ -28,7 +28,7 @@
         >
     </Spinner>
 
-    <TextView
+    <EditText
         android:id="@+id/voiceInput"
         android:background="#33FF0000"
         android:textSize="16sp"
