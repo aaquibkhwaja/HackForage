@@ -267,6 +267,11 @@ public class Helper {
         banglaMap.put("shosha", "kheera");
 
         wordsMap.put("bn", banglaMap);
+
+        Map<String, String> kannadaMap = new HashMap<>();
+        kannadaMap.put("sakra", "sugar");
+
+        wordsMap.put("kn", kannadaMap);
     }
 
     public static void buildFinalMap()
